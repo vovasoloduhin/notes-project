@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Мої замітки</title>
+</head>
+<body>
+
+<h1>Мої замітки</h1>
+
+<a href="{% url 'create_note' %}">Створити нову замітку</a>
+
+<hr>
+
+{% if notes %}
+    <ul>
+        {% for note in notes %}
+            <li>
+                <a href="{% url 'note_detail' note.pk %}">
+                    {{ note.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Заміток поки немає.</p>
+{% endif %}
+
+</body>
+</html>
